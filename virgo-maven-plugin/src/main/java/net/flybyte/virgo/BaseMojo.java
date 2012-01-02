@@ -48,19 +48,19 @@ public abstract class BaseMojo extends AbstractMojo {
 	 */
 	protected String finalArtefact;
 	/**
-	 * The symbolic name of the bundle. The default value is
-	 * <code>${project.groupId}.${project.artifactId}</code>.
+	 * The symbolic name of the bundle. In case one is using something different than
+	 * <code>${project.groupId}.${project.artifactId}</code> for the symbolic name when using the
+	 * Maven bundle plugin or Bundlor Maven plugin change the value of this property accordingly.
 	 * 
 	 * @parameter property="symbolicName" default-value="${project.groupId}.${project.artifactId}"
-	 * @required
 	 */
 	private String symbolicName;
 	/**
 	 * An OSGi compatible version of the project version. Default value used for transformation is
-	 * <code>${project.version}</code>.
+	 * <code>${project.version}</code>. Once the getter method is called it will transform the first
+	 * -(hyphen) it can find into a .(dot).
 	 * 
 	 * @parameter property=osgiVersion default-value="${project.version}"
-	 * @required
 	 */
 	private String osgiVersion;
 	/**
@@ -71,47 +71,40 @@ public abstract class BaseMojo extends AbstractMojo {
 	 */
 	private File virgoRoot;
 	/**
-	 * The location of the truststore used by Virgo. In case this property has neither been set via
-	 * VM arguments nor in the POM configuration the virgo root directory will be used and a
-	 * relative path <code>/config/keystore</code> will be added to the end of it.
+	 * The location of the truststore used by Virgo. Instead of definining this property in the pom
+	 * file it is also possible to use a VM argument <code>-Djavax.net.ssl.trustStore</code> when
+	 * executing the Maven goal. In case this property has neither been set via VM arguments nor in
+	 * the POM configuration the virgo root directory will be used and a relative path
+	 * <code>/config/keystore</code> will be added to it.
 	 * 
 	 * @parameter property="truststoreLocation" expression="${javax.net.ssl.trustStore}"
 	 */
 	private File truststoreLocation;
 	/**
-	 * The service url of the JMX management server. Default value is
-	 * <code>service:jmx:rmi://localhost:9875/jndi/rmi://localhost:9875/jmxrmi</code> .
+	 * The service url of the JMX management server.
 	 * 
 	 * @parameter property="serviceUrl" default-value=
 	 *            "service:jmx:rmi://localhost:9875/jndi/rmi://localhost:9875/jmxrmi"
 	 */
 	private String serviceUrl;
 	/**
-	 * The username used to connect to Virgo via JMX. Default value is <code>admin</code>.
+	 * The username used to connect to Virgo via JMX.
 	 * 
 	 * @parameter property="user" default-value="admin"
 	 */
 	private String user;
 	/**
-	 * The password used to connect to Virgo via JMX. Default value is <code>springsource</code>
+	 * The password used to connect to Virgo via JMX.
 	 * 
 	 * @parameter property="password" default-value="springsource"
 	 */
 	private String password;
 	/**
-	 * Defineds whether or not the artifact should be recovered after a server restart. Default
-	 * value is <code>true</code>.
+	 * Defineds whether or not the artifact should be recovered after a server restart.
 	 * 
 	 * @parameter property="recoverable" default-value="true"
 	 */
 	private boolean recoverable;
-	/**
-	 * This property is used for the startup of a new Virgo instance. In case the value is higher
-	 * than 0 it will wait for the defined time (in ms) until it proceeds with the build.
-	 * 
-	 * @parameter property="startTimeout" expression="${startTimeout}" default-value="0"
-	 */
-	private int startTimeout;
 	private JMXConnector connector = null;
 	private MBeanServerConnection connection = null;
 
@@ -206,12 +199,12 @@ public abstract class BaseMojo extends AbstractMojo {
 	}
 
 	public String getOsgiVersion() {
-		return osgiVersion;
+		// replace the first - with .
+		return osgiVersion.replaceFirst("-", ".");
 	}
 
 	public void setOsgiVersion(String osgiVersion) {
-		// replace the first - with .
-		this.osgiVersion = osgiVersion.replaceFirst("-", ".");
+		this.osgiVersion = osgiVersion;
 	}
 
 	public File getVirgoRoot() {
@@ -260,14 +253,6 @@ public abstract class BaseMojo extends AbstractMojo {
 
 	public void setRecoverable(boolean recoverable) {
 		this.recoverable = recoverable;
-	}
-
-	public int getStartTimeout() {
-		return startTimeout;
-	}
-
-	public void setStartTimeout(int startTimeout) {
-		this.startTimeout = startTimeout;
 	}
 
 }

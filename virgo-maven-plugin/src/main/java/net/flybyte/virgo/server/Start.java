@@ -34,9 +34,7 @@ public class Start extends BaseMojo {
 			}
 			logger.info("Startup script found at " + startup.getAbsolutePath()
 					+ ", start server instance");
-			System.out.println(startupCmd + " " + startup.getAbsolutePath());
-			Runtime.getRuntime().exec(startupCmd + " " + startup.getAbsolutePath() + " &");
-//			Thread.sleep(getStartTimeout());
+			Runtime.getRuntime().exec(startupCmd + " " + startup.getAbsolutePath());
 		} catch (Exception e) {
 			throw new MojoFailureException(stackTrace2String(e));
 		}
