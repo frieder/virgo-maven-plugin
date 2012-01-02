@@ -122,15 +122,18 @@ public abstract class BaseMojo extends AbstractMojo {
 		if (connection != null) {
 			return connection;
 		}
-		// check whether or not truststoreLocation has been provided and does actually exist
-		if (truststoreLocation == null || !truststoreLocation.exists()) {
-			truststoreLocation = new File(virgoRoot, "config/keystore");
-			if (!truststoreLocation.exists()) {
-				throw new IOException("Cannot find a keystore file");
+		// check whether or not the location to the truststore has been provided and does actually exist
+		String trustStoreArgument = System.getProperty("javax.net.ssl.trustStore");
+		if(trustStoreArgument == null || !new File(trustStoreArgument).exists()) {
+			if (truststoreLocation == null || !truststoreLocation.exists()) {
+				truststoreLocation = new File(virgoRoot, "config/keystore");
+				if (!truststoreLocation.exists()) {
+					throw new IOException("Cannot find a keystore file");
+				}
 			}
-		}
-		// set path to the truststore location
-		System.setProperty("javax.net.ssl.trustStore", truststoreLocation.getAbsolutePath());
+			// set path to the truststore location
+			System.setProperty("javax.net.ssl.trustStore", truststoreLocation.getAbsolutePath());
+		}		
 		// create a service url
 		logger.info("Create new service URL: " + getServiceUrl());
 		JMXServiceURL url = new JMXServiceURL(getServiceUrl());
