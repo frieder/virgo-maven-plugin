@@ -105,6 +105,13 @@ public abstract class BaseMojo extends AbstractMojo {
 	 * @parameter property="recoverable" default-value="true"
 	 */
 	private boolean recoverable;
+	/**
+	 * This property is used for the startup of a new Virgo instance. In case the value is higher
+	 * than 0 it will wait for the defined time (in ms) until it proceeds with the build.
+	 * 
+	 * @parameter property="startTimeout" expression="${startTimeout}" default-value="0"
+	 */
+	private int startTimeout;
 	private JMXConnector connector = null;
 	private MBeanServerConnection connection = null;
 
@@ -254,4 +261,13 @@ public abstract class BaseMojo extends AbstractMojo {
 	public void setRecoverable(boolean recoverable) {
 		this.recoverable = recoverable;
 	}
+
+	public int getStartTimeout() {
+		return startTimeout;
+	}
+
+	public void setStartTimeout(int startTimeout) {
+		this.startTimeout = startTimeout;
+	}
+
 }

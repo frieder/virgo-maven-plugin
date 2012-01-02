@@ -16,7 +16,7 @@ import net.flybyte.virgo.BaseMojo;
  * >Virgo sourcecode</a> for more information.
  * 
  * @goal immediateShutdown
- * @requiresProject false
+ * @requiresProject true
  * 
  * @author Frieder Heugel
  * 
