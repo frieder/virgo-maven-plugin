@@ -1,0 +1,281 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>maven-virgo-plugin Maven plugin - virgo:immediateShutdown</title>
+    <style type="text/css" media="all">
+      @import url("./css/maven-base.css");
+      @import url("./css/maven-theme.css");
+      @import url("./css/site.css");
+    </style>
+    <link rel="stylesheet" href="./css/print.css" type="text/css" media="print" />
+          </head>
+  <body class="composite">
+    <div id="banner">
+                    <span id="bannerLeft">
+    
+            maven-virgo-plugin Maven plugin
+    
+            </span>
+                    <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="breadcrumbs">
+          
+  
+
+  
+    
+  
+  
+    
+            <div class="xleft">
+        Last Published: 2012-01-02
+                      </div>
+            <div class="xright">      
+  
+
+  
+    
+  
+  
+    
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="leftColumn">
+      <div id="navcolumn">
+           
+  
+
+  
+    
+  
+  
+    
+                   <h5>Overview</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="index.html">Introduction</a>
+          </li>
+          </ul>
+              <h5>Examples</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="examples/simple-pom.xml">Simple configuration</a>
+          </li>
+              
+    <li class="none">
+                    <a href="examples/full-pom.xml">Full configuration</a>
+          </li>
+              
+    <li class="none">
+                    <a href="examples/phase-pom.xml">Add goal to phase</a>
+          </li>
+          </ul>
+                                           <a href="http://maven.apache.org/" title="Built by Maven" class="poweredBy">
+            <img alt="Built by Maven" src="./images/logos/maven-feather.png"></img>
+          </a>
+                       
+  
+
+  
+    
+  
+  
+    
+        </div>
+    </div>
+    <div id="bodyColumn">
+      <div id="contentBox">
+        <div class="section"><h2><a name="virgo:immediateShutdown"></a>virgo:immediateShutdown</h2>
+<p><strong>Full name</strong>:</p>
+<p>net.flybyte.virgo:virgo-maven-plugin:0.0.1-SNAPSHOT:immediateShutdown</p>
+<p><strong>Description</strong>:</p>
+<div>Stops a running Eclipse Virgo instance immediately. Check the <a href="http://virgo-opengrok.springsource.org/xref/virgo/org.eclipse.virgo.kernel/org.eclipse.virgo.kernel.core/src/main/java/org/eclipse/virgo/kernel/core/Shutdown.java" class="externalLink">Virgo
+sourcecode</a> for more information.</div><p><strong>Attributes</strong>:</p>
+<ul><li>Requires a Maven project to be executed.</li>
+</ul>
+<div class="section"><h3><a name="Required_Parameters"></a>Required Parameters</h3>
+<table class="bodyTable"><tr class="a"><th>Name</th>
+<th>Type</th>
+<th>Since</th>
+<th>Description</th>
+</tr>
+<tr class="b"><td><strong><a href="#virgoRoot">virgoRoot</a></strong></td>
+<td><code>File</code></td>
+<td><code>-</code></td>
+<td>The root directory of the Virgo installation.<br />
+</td>
+</tr>
+</table>
+</div>
+<div class="section"><h3><a name="Optional_Parameters"></a>Optional Parameters</h3>
+<table class="bodyTable"><tr class="a"><th>Name</th>
+<th>Type</th>
+<th>Since</th>
+<th>Description</th>
+</tr>
+<tr class="b"><td><strong><a href="#osgiVersion">osgiVersion</a></strong></td>
+<td><code>String</code></td>
+<td><code>-</code></td>
+<td>An OSGi compatible version of the project version. Default value
+used for transformation is <code>${project.version}</code>. Once
+the getter method is called it will transform the first -(hyphen)
+it can find into a .(dot).<br />
+<strong>Default value is</strong>: <code>${project.version}</code>.</td>
+</tr>
+<tr class="a"><td><strong><a href="#password">password</a></strong></td>
+<td><code>String</code></td>
+<td><code>-</code></td>
+<td>The password used to connect to Virgo via JMX.<br />
+<strong>Default value is</strong>: <code>springsource</code>.</td>
+</tr>
+<tr class="b"><td><strong><a href="#recoverable">recoverable</a></strong></td>
+<td><code>boolean</code></td>
+<td><code>-</code></td>
+<td>Defineds whether or not the artifact should be recovered after a
+server restart.<br />
+<strong>Default value is</strong>: <code>true</code>.</td>
+</tr>
+<tr class="a"><td><strong><a href="#serviceUrl">serviceUrl</a></strong></td>
+<td><code>String</code></td>
+<td><code>-</code></td>
+<td>The service url of the JMX management server.<br />
+<strong>Default value is</strong>: <code>service:jmx:rmi://localhost:9875/jndi/rmi://localhost:9875/jmxrmi</code>.</td>
+</tr>
+<tr class="b"><td><strong><a href="#symbolicName">symbolicName</a></strong></td>
+<td><code>String</code></td>
+<td><code>-</code></td>
+<td>The symbolic name of the bundle. In case one is using something
+different than
+<code>${project.groupId}.${project.artifactId}</code> for the
+symbolic name when using the Maven bundle plugin or Bundlor Maven
+plugin change the value of this property accordingly.<br />
+<strong>Default value is</strong>: <code>${project.groupId}.${project.artifactId}</code>.</td>
+</tr>
+<tr class="a"><td><strong><a href="#truststoreLocation">truststoreLocation</a></strong></td>
+<td><code>File</code></td>
+<td><code>-</code></td>
+<td>The location of the truststore used by Virgo. Instead of definining
+this property in the pom file it is also possible to use a VM
+argument <code>-Djavax.net.ssl.trustStore</code> when executing the
+Maven goal. In case this property has neither been set via VM
+arguments nor in the POM configuration the virgo root directory
+will be used and a relative path <code>/config/keystore</code> will
+be added to it.<br />
+</td>
+</tr>
+<tr class="b"><td><strong><a href="#user">user</a></strong></td>
+<td><code>String</code></td>
+<td><code>-</code></td>
+<td>The username used to connect to Virgo via JMX.<br />
+<strong>Default value is</strong>: <code>admin</code>.</td>
+</tr>
+</table>
+</div>
+<div class="section"><h3><a name="Parameter_Details"></a>Parameter Details</h3>
+<p><strong><a name="osgiVersion">osgiVersion</a>:</strong></p>
+<div>An OSGi compatible version of the project version. Default value
+used for transformation is <code>${project.version}</code>. Once
+the getter method is called it will transform the first -(hyphen)
+it can find into a .(dot).</div><ul><li><strong>Type</strong>: <code>java.lang.String</code></li>
+<li><strong>Required</strong>: <code>No</code></li>
+<li><strong>Default</strong>: <code>${project.version}</code></li>
+</ul>
+<hr />
+<p><strong><a name="password">password</a>:</strong></p>
+<div>The password used to connect to Virgo via JMX.</div><ul><li><strong>Type</strong>: <code>java.lang.String</code></li>
+<li><strong>Required</strong>: <code>No</code></li>
+<li><strong>Default</strong>: <code>springsource</code></li>
+</ul>
+<hr />
+<p><strong><a name="recoverable">recoverable</a>:</strong></p>
+<div>Defineds whether or not the artifact should be recovered after a
+server restart.</div><ul><li><strong>Type</strong>: <code>boolean</code></li>
+<li><strong>Required</strong>: <code>No</code></li>
+<li><strong>Default</strong>: <code>true</code></li>
+</ul>
+<hr />
+<p><strong><a name="serviceUrl">serviceUrl</a>:</strong></p>
+<div>The service url of the JMX management server.</div><ul><li><strong>Type</strong>: <code>java.lang.String</code></li>
+<li><strong>Required</strong>: <code>No</code></li>
+<li><strong>Default</strong>: <code>service:jmx:rmi://localhost:9875/jndi/rmi://localhost:9875/jmxrmi</code></li>
+</ul>
+<hr />
+<p><strong><a name="symbolicName">symbolicName</a>:</strong></p>
+<div>The symbolic name of the bundle. In case one is using something
+different than
+<code>${project.groupId}.${project.artifactId}</code> for the
+symbolic name when using the Maven bundle plugin or Bundlor Maven
+plugin change the value of this property accordingly.</div><ul><li><strong>Type</strong>: <code>java.lang.String</code></li>
+<li><strong>Required</strong>: <code>No</code></li>
+<li><strong>Default</strong>: <code>${project.groupId}.${project.artifactId}</code></li>
+</ul>
+<hr />
+<p><strong><a name="truststoreLocation">truststoreLocation</a>:</strong></p>
+<div>The location of the truststore used by Virgo. Instead of definining
+this property in the pom file it is also possible to use a VM
+argument <code>-Djavax.net.ssl.trustStore</code> when executing the
+Maven goal. In case this property has neither been set via VM
+arguments nor in the POM configuration the virgo root directory
+will be used and a relative path <code>/config/keystore</code> will
+be added to it.</div><ul><li><strong>Type</strong>: <code>java.io.File</code></li>
+<li><strong>Required</strong>: <code>No</code></li>
+<li><strong>Expression</strong>: <code>${javax.net.ssl.trustStore}</code></li>
+</ul>
+<hr />
+<p><strong><a name="user">user</a>:</strong></p>
+<div>The username used to connect to Virgo via JMX.</div><ul><li><strong>Type</strong>: <code>java.lang.String</code></li>
+<li><strong>Required</strong>: <code>No</code></li>
+<li><strong>Default</strong>: <code>admin</code></li>
+</ul>
+<hr />
+<p><strong><a name="virgoRoot">virgoRoot</a>:</strong></p>
+<div>The root directory of the Virgo installation.</div><ul><li><strong>Type</strong>: <code>java.io.File</code></li>
+<li><strong>Required</strong>: <code>Yes</code></li>
+<li><strong>Expression</strong>: <code>${virgoRoot}</code></li>
+</ul>
+</div>
+</div>
+
+      </div>
+    </div>
+    <div class="clear">
+      <hr/>
+    </div>
+    <div id="footer">
+      <div class="xright">&#169;  
+          2012
+    
+          
+  
+
+  
+    
+  
+  
+    
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+  </body>
+</html>
