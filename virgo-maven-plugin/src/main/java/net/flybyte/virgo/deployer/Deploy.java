@@ -32,7 +32,7 @@ public class Deploy extends BaseMojo {
 			logger.info("Add " + artefactPath + " to the argument list");
 			ObjectName name = new ObjectName(BaseMojo.MBEAN_DEPLOYER);
 			Object[] params  = { "file:///" + artefactPath, isRecoverable() };
-			String[] signature = { "java.lang.String", "java.lang.Boolean" };
+			String[] signature = { "java.lang.String", "boolean" };
 			logger.info("Deploy artifact");
 			// invoke the deploy method of the Deployer MBean
 			connection.invoke(name, "deploy", params, signature);
