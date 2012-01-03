@@ -9,7 +9,8 @@
     </menu>
    
     <menu name="Examples">
-      <item name="Simple configuration" href="examples/simple-pom.xml"/>
+      <item name="Simple configuration maven-bundle-plugin" href="examples/simple-pom.xml"/>
+      <item name="Simple configuration with Bundlor" href="examples/simple2-pom.xml"/>
       <item name="Full configuration" href="examples/full-pom.xml"/>
       <item name="Add goal to phase" href="examples/phase-pom.xml"/>
     </menu>

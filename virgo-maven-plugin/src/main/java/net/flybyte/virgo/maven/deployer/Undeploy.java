@@ -1,45 +1,43 @@
-package net.flybyte.virgo.deployer;
+package net.flybyte.virgo.maven.deployer;
 
 import java.io.IOException;
 
 import javax.management.MBeanServerConnection;
 import javax.management.ObjectName;
 
+import net.flybyte.virgo.maven.BaseMojo;
+import net.flybyte.virgo.maven.ExtendedBaseMojo;
+
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 
-import net.flybyte.virgo.BaseMojo;
-
 /**
- * Refresh a single module of the application which was deployed from the given URI via Eclipse
- * Virgo's MBean. Check the <a href=
+ * Undeploys an already deployed maven artefact from Eclipse Virgo via the deployer MBean. Check the <a href=
  * "http://virgo-opengrok.springsource.org/xref/virgo/org.eclipse.virgo.kernel/org.eclipse.virgo.kernel.deployer/src/main/java/org/eclipse/virgo/kernel/deployer/Deployer.java"
  * >Virgo sourcecode</a> for more information.
  * 
- * @goal refresh
+ * @goal undeploy
  * @requiresProject true
  * 
  * @author Frieder Heugel
- * 
+ *
  */
-public class Refresh extends BaseMojo {
+public class Undeploy extends ExtendedBaseMojo {
 
 	@Override
 	public void execute() throws MojoExecutionException, MojoFailureException {
 		try {
-			logger.info("Start refreshing single module");
+			logger.info("Start undeploying the artefact from Eclipse Virgo");
 			MBeanServerConnection connection = getConnection();
-			String artefactPath = getArtefactFile().getAbsolutePath().replaceAll("\\\\", "/");
 			// get the Deployer MBean and set up the arguments
-			logger.info("Add module with uri 'file:///" + artefactPath + "' and symbolic name '"
-					+ getSymbolicName() + "' to the argument list");
+			logger.info("Add bundle with symbolic name '" + getSymbolicName() + "' and version '" + getOsgiVersion() + "' to the argument list");
 			ObjectName name = new ObjectName(BaseMojo.MBEAN_DEPLOYER);
-			Object[] params = { "file:///" + artefactPath, getOsgiVersion() };
+			Object[] params  = { getSymbolicName(), getOsgiVersion() };
 			String[] signature = { "java.lang.String", "java.lang.String" };
-			logger.info("Refresh module");
+			logger.info("Undeploy bundle");
 			// invoke the undeploy method of the Deployer MBean
-			connection.invoke(name, "refresh", params, signature);
-		} catch (Exception e) {
+			connection.invoke(name, "undeploy", params, signature);
+		}  catch (Exception e) {
 			throw new MojoFailureException(stackTrace2String(e));
 		} finally {
 			try {
@@ -47,7 +45,7 @@ public class Refresh extends BaseMojo {
 			} catch (IOException e) {
 				throw new MojoFailureException(stackTrace2String(e));
 			}
-		}		
+		}
 	}
 
 }

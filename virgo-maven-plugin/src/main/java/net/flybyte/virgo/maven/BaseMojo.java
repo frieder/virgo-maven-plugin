@@ -1,4 +1,4 @@
-package net.flybyte.virgo;
+package net.flybyte.virgo.maven;
 
 import java.io.File;
 import java.io.IOException;
@@ -21,48 +21,20 @@ import org.apache.maven.plugin.logging.Log;
 
 /**
  * This class acts as a base class used to initialize all the parameters and configuration settings
- * needed for executing the various mojo implementations.
+ * needed for executing the both groups of mojo implementations (server and deployer).
  * 
  * @author Frieder Heugel
  */
 public abstract class BaseMojo extends AbstractMojo {
+	/**
+	 * The identifier for the Virgo Shutdown MBean 
+	 */
 	public static final String MBEAN_SHUTDOWN = "org.eclipse.virgo.kernel:type=Shutdown";
+	/**
+	 * The identifier for the Virgo Deployer MBean
+	 */
 	public static final String MBEAN_DEPLOYER = "org.eclipse.virgo.kernel:category=Control,type=Deployer";
-	public static final String MBEAN_CLASSLOADING = "org.eclipse.virgo.kernel:type=Classloading";
-	public static final String MBEAN_LOGBACK = "";
 	protected Log logger = getLog();
-	/**
-	 * The location of the target folder.
-	 * 
-	 * @parameter expression="${project.build.directory}"
-	 * @required
-	 * @readonly
-	 */
-	protected String path;
-	/**
-	 * The artifact's final name (excluding the extension)
-	 * 
-	 * @parameter expression="${project.build.finalName}"
-	 * @required
-	 * @readonly
-	 */
-	protected String finalArtefact;
-	/**
-	 * The symbolic name of the bundle. In case one is using something different than
-	 * <code>${project.groupId}.${project.artifactId}</code> for the symbolic name when using the
-	 * Maven bundle plugin or Bundlor Maven plugin change the value of this property accordingly.
-	 * 
-	 * @parameter property="symbolicName" default-value="${project.groupId}.${project.artifactId}"
-	 */
-	private String symbolicName;
-	/**
-	 * An OSGi compatible version of the project version. Default value used for transformation is
-	 * <code>${project.version}</code>. Once the getter method is called it will transform the first
-	 * -(hyphen) it can find into a .(dot).
-	 * 
-	 * @parameter property=osgiVersion default-value="${project.version}"
-	 */
-	private String osgiVersion;
 	/**
 	 * The root directory of the Virgo installation.
 	 * 
@@ -99,18 +71,14 @@ public abstract class BaseMojo extends AbstractMojo {
 	 * @parameter property="password" default-value="springsource"
 	 */
 	private String password;
-	/**
-	 * Defineds whether or not the artifact should be recovered after a server restart.
-	 * 
-	 * @parameter property="recoverable" default-value="true"
-	 */
-	private boolean recoverable;
 	private JMXConnector connector = null;
 	private MBeanServerConnection connection = null;
 
 	public abstract void execute() throws MojoExecutionException, MojoFailureException;
 
-	// helper methods **********************************************
+	/*
+	 *  helper methods **********************************************
+	 */
 
 	/**
 	 * This method can be used to get an active MBeanServerConnection object.
@@ -122,9 +90,11 @@ public abstract class BaseMojo extends AbstractMojo {
 		if (connection != null) {
 			return connection;
 		}
-		// check whether or not the location to the truststore has been provided and does actually exist
+		// check whether or not the location to the truststore has been provided and does actually
+		// exist
 		String trustStoreArgument = System.getProperty("javax.net.ssl.trustStore");
-		if(trustStoreArgument == null || !new File(trustStoreArgument).exists()) {
+		if (trustStoreArgument == null || !new File(trustStoreArgument).exists()
+				|| !new File(trustStoreArgument).isFile()) {
 			if (truststoreLocation == null || !truststoreLocation.exists()) {
 				truststoreLocation = new File(virgoRoot, "config/keystore");
 				if (!truststoreLocation.exists()) {
@@ -133,7 +103,7 @@ public abstract class BaseMojo extends AbstractMojo {
 			}
 			// set path to the truststore location
 			System.setProperty("javax.net.ssl.trustStore", truststoreLocation.getAbsolutePath());
-		}		
+		}
 		// create a service url
 		logger.info("Create new service URL: " + getServiceUrl());
 		JMXServiceURL url = new JMXServiceURL(getServiceUrl());
@@ -165,7 +135,7 @@ public abstract class BaseMojo extends AbstractMojo {
 	 * Transforms a stack trace into a String object.
 	 * 
 	 * @param throwable
-	 * @return
+	 * @return The strack trace payload as a String object.
 	 */
 	public static String stackTrace2String(Throwable throwable) {
 		final Writer result = new StringWriter();
@@ -174,41 +144,9 @@ public abstract class BaseMojo extends AbstractMojo {
 		return result.toString();
 	}
 
-	/**
-	 * This method identifies the complete path of the artefact (including its extension) and
-	 * returns a file object. <code>${project.build.finalName}</code> doesn't provide the extension
-	 * and therefore this method is needed.
-	 * 
-	 * @return
+	/*
+	 *  getter/setter methods ***************************************
 	 */
-	public File getArtefactFile() {
-		File[] files = new File(path).listFiles();
-		for (File file : files) {
-			if (file.isFile() && file.getName().startsWith(finalArtefact)) {
-				return file;
-			}
-		}
-		return null;
-	}
-
-	// getter/setter methods ***************************************
-
-	public String getSymbolicName() {
-		return symbolicName;
-	}
-
-	public void setSymbolicName(String symbolicName) {
-		this.symbolicName = symbolicName;
-	}
-
-	public String getOsgiVersion() {
-		// replace the first - with .
-		return osgiVersion.replaceFirst("-", ".");
-	}
-
-	public void setOsgiVersion(String osgiVersion) {
-		this.osgiVersion = osgiVersion;
-	}
 
 	public File getVirgoRoot() {
 		return virgoRoot;
@@ -248,14 +186,6 @@ public abstract class BaseMojo extends AbstractMojo {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	public boolean isRecoverable() {
-		return recoverable;
-	}
-
-	public void setRecoverable(boolean recoverable) {
-		this.recoverable = recoverable;
 	}
 
 }

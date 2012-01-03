@@ -1,14 +1,15 @@
-package net.flybyte.virgo.server;
+package net.flybyte.virgo.maven.server;
 
 import java.io.File;
+import java.io.IOException;
 
+import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
-
-import net.flybyte.virgo.BaseMojo;
+import org.apache.maven.plugin.logging.Log;
 
 /**
- * Starts a Eclipse Virgo instance by executing the provided startup script.
+ * Starts an Eclipse Virgo instance by executing the provided startup script.
  * 
  * @goal start
  * @requiresProject true
@@ -16,9 +17,16 @@ import net.flybyte.virgo.BaseMojo;
  * @author Frieder Heugel
  * 
  */
-public class Start extends BaseMojo {
+public class Start extends AbstractMojo {
+	private Log logger = getLog();
+	/**
+	 * The root directory of the Virgo installation.
+	 * 
+	 * @parameter property="virgoRoot" expression="${virgoRoot}"
+	 * @required
+	 */
+	private File virgoRoot;
 
-	@Override
 	public void execute() throws MojoExecutionException, MojoFailureException {
 		try {
 			logger.info("Prepare startup of Eclipse Virgo");
@@ -29,15 +37,27 @@ public class Start extends BaseMojo {
 				startupCmd = "sh";
 			}
 			File startup = new File(getVirgoRoot(), startupScript);
-			if (startup == null || !startup.exists()) {
+			if (startup == null || !startup.exists() || !startup.isFile()) {
 				throw new MojoFailureException("Cannot find the startup script");
 			}
 			logger.info("Startup script found at " + startup.getAbsolutePath()
 					+ ", start server instance");
 			Runtime.getRuntime().exec(startupCmd + " " + startup.getAbsolutePath());
-		} catch (Exception e) {
-			throw new MojoFailureException(stackTrace2String(e));
+		} catch (IOException e) {
+			throw new MojoFailureException("An exception occurred while executing the startup script", e);
 		}
+	}
+
+	/*
+	 *  getter/setter methods ***************************************
+	 */
+
+	public File getVirgoRoot() {
+		return virgoRoot;
+	}
+
+	public void setVirgoRoot(File virgoRoot) {
+		this.virgoRoot = virgoRoot;
 	}
 
 }

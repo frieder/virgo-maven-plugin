@@ -1,11 +1,12 @@
-package net.flybyte.virgo.deployer;
+package net.flybyte.virgo.maven.deployer;
 
 import java.io.IOException;
 
 import javax.management.MBeanServerConnection;
 import javax.management.ObjectName;
 
-import net.flybyte.virgo.BaseMojo;
+import net.flybyte.virgo.maven.BaseMojo;
+import net.flybyte.virgo.maven.ExtendedBaseMojo;
 
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
@@ -20,7 +21,7 @@ import org.apache.maven.plugin.MojoFailureException;
  * 
  * @author Frieder Heugel
  */
-public class Deploy extends BaseMojo {
+public class Deploy extends ExtendedBaseMojo {
 
 	@Override
 	public void execute() throws MojoExecutionException, MojoFailureException {

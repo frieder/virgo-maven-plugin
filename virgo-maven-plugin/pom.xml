@@ -3,14 +3,31 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>net.flybyte.virgo</groupId>
 	<artifactId>virgo-maven-plugin</artifactId>
+	<version>1.0.0</version>
 	<packaging>maven-plugin</packaging>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>maven-virgo-plugin Maven plugin</name>
+	<name>Maven plugin for Eclipse Virgo</name>
 	<description>
-		This maven plugin allows to perform various actions (start/stop/restart server, deploy/undeploy/update bundles, 
-		update the logging configuration, display some useful information about bundles) to a running instance of Eclipse 
-		Virgo via a remote secured JMX connection. 
+		The Eclipse Virgo Maven plugin provides goals to startup and shutdown an instance of Eclipse Virgo. 
+		Moreover it allows the deployment/undeployment of OSGi bundles to/from Virgo.
 	</description>
+	<url>https://github.com/frieder/virgo-maven-plugin</url>
+	<licenses>
+		<license>
+			<name>Eclipse Public License - Version 1.0</name>
+			<url>http://eclipse.org/legal/epl-v10.html</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+	<scm>
+		<url>https://github.com/frieder/virgo-maven-plugin</url>
+		<connection>https://github.com/frieder/virgo-maven-plugin</connection>
+	</scm>
+	<developers>
+		<developer>
+			<id>fkh</id>
+			<name>Frieder Heugel</name>
+		</developer>
+	</developers>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

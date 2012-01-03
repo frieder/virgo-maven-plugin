@@ -28,7 +28,11 @@ Maven Plugin for Eclipse Virgo
   
   * {{{refreshBundle-mojo.html}virgo:refreshBundle}} refreshs a bundle deployed in a running Virgo instance.
   
+  * {{{start-mojo.html}virgo:start}} Starts a Virgo instance.
+  
   * {{{shutdown-mojo.html}virgo:shutdown}} Stops a running Virgo instance.
+  
+  * {{{immediateShutdown-mojo.html}virgo:immediateShutdown}} Stops a running Virgo instance immediately.
   
 
 * Usage

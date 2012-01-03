@@ -1,4 +1,4 @@
-package net.flybyte.virgo.server;
+package net.flybyte.virgo.maven.server;
 
 import java.io.IOException;
 
@@ -8,7 +8,7 @@ import javax.management.ObjectName;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 
-import net.flybyte.virgo.BaseMojo;
+import net.flybyte.virgo.maven.BaseMojo;
 
 /**
  * Stops a running Eclipse Virgo instance. Check the <a href=
