@@ -13,7 +13,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>maven-virgo-plugin Maven plugin - Introduction</title>
+    <title>Maven plugin for Eclipse Virgo - Introduction</title>
     <style type="text/css" media="all">
       @import url("./css/maven-base.css");
       @import url("./css/maven-theme.css");
@@ -26,7 +26,7 @@
     <div id="banner">
                     <span id="bannerLeft">
     
-            maven-virgo-plugin Maven plugin
+            Maven plugin for Eclipse Virgo
     
             </span>
                     <div class="clear">
@@ -43,7 +43,7 @@
   
     
             <div class="xleft">
-        Last Published: 2012-01-02
+        Last Published: 2012-01-03
                       </div>
             <div class="xright">      
   
@@ -79,7 +79,11 @@
             <ul>
               
     <li class="none">
-                    <a href="examples/simple-pom.xml">Simple configuration</a>
+                    <a href="examples/simple-pom.xml">Simple configuration maven-bundle-plugin</a>
+          </li>
+              
+    <li class="none">
+                    <a href="examples/simple2-pom.xml">Simple configuration with Bundlor</a>
           </li>
               
     <li class="none">
@@ -108,7 +112,7 @@
         <div class="section"><h2>Maven Plugin for Eclipse Virgo</h2>
 <p>This maven plugin provides goals to use some of the functions provided by the Virgo MBean server.</p>
 <div class="section"><h3>General</h3>
-<p>The project is published under the Eclipse Public License (EPL) 1.0. <a href="https://github.com/frieder/virgo-maven-plugin" class="externalLink">The sourcecode is available on Github</a></p>
+<p>The project is published under the Eclipse Public License (EPL) 1.0. <a class="externalLink" href="https://github.com/frieder/virgo-maven-plugin">The sourcecode is available on Github</a></p>
 </div>
 <div class="section"><h3>Goals Overview</h3>
 <p>General information about the goals.</p>
@@ -116,11 +120,13 @@
 <li><a href="undeploy-mojo.html">virgo:undeploy</a> undeploys a bundle from a running Virgo instance.</li>
 <li><a href="refresh-mojo.html">virgo:refresh</a> refreshs a module deployed in a running Virgo instance.</li>
 <li><a href="refreshBundle-mojo.html">virgo:refreshBundle</a> refreshs a bundle deployed in a running Virgo instance.</li>
+<li><a href="start-mojo.html">virgo:start</a> Starts a Virgo instance.</li>
 <li><a href="shutdown-mojo.html">virgo:shutdown</a> Stops a running Virgo instance.</li>
+<li><a href="immediateShutdown-mojo.html">virgo:immediateShutdown</a> Stops a running Virgo instance immediately.</li>
 </ul>
 </div>
 <div class="section"><h3>Usage</h3>
-<p>Create a Maven project that is using either the <a href="http://felix.apache.org/site/apache-felix-maven-bundle-plugin-bnd.html" class="externalLink">Maven bundle plugin</a> or <a href="http://www.eclipse.org/virgo/" class="externalLink">Eclipse Virgo Bundlor</a> to create OSGi bundles. Next add the Virgo Maven plugin to the project pom file. Then it depends on what should be done next.</p>
+<p>Create a Maven project that is using either the <a class="externalLink" href="http://felix.apache.org/site/apache-felix-maven-bundle-plugin-bnd.html">Maven bundle plugin</a> or <a class="externalLink" href="http://www.eclipse.org/virgo/">Eclipse Virgo Bundlor</a> to create OSGi bundles. Next add the Virgo Maven plugin to the project pom file. Then it depends on what should be done next.</p>
 <ul><li>In case of the deploy goal build the artifact first (package)</li>
 <li>In case of the undeploy goal ensure that a bundle with the given symbolic name and version is available within the Virgo instance</li>
 <li>In case of the refresh goal ensure that a module has been deployed from the exact same uri before</li>

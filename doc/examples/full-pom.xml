@@ -30,10 +30,10 @@
 			<plugin>
 				<groupId>net.flybyte.virgo</groupId>
 				<artifactId>virgo-maven-plugin</artifactId>
-				<version>0.0.1-SNAPSHOT</version>
+				<version>1.0.0</version>
 				<configuration>
-					<virgoRoot>C:/Java/virgo-tomcat-server-3.1.0.M01</virgoRoot>
-					<truststoreLocation>C:/Java/virgo-tomcat-server-3.1.0.M01/config/keystore</truststoreLocation>
+					<virgoRoot>C:/Java/virgo-tomcat-server-3.0.2.RELEASE</virgoRoot>
+					<truststoreLocation>C:/Java/virgo-tomcat-server-3.0.2.RELEASE/config/keystore</truststoreLocation>
 					<serviceUrl>service:jmx:rmi://localhost:9875/jndi/rmi://localhost:9875/jmxrmi</serviceUrl>
 					<osgiVersion>${bundleVersion}</osgiVersion>
 					<symbolicName>${project.groupId}.${project.artifactId}</symbolicName>

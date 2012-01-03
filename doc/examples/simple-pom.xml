@@ -31,7 +31,7 @@
 				<artifactId>virgo-maven-plugin</artifactId>
 				<version>0.0.1-SNAPSHOT</version>
 				<configuration>
-					<virgoRoot>C:/Java/virgo-tomcat-server-3.1.0.M01</virgoRoot>
+					<virgoRoot>C:/Java/virgo-tomcat-server-3.0.2.RELEASE</virgoRoot>
 				</configuration>
 			</plugin>
 		</plugins>

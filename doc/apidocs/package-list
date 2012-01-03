@@ -1,3 +1,3 @@
-net.flybyte.virgo
-net.flybyte.virgo.deployer
-net.flybyte.virgo.server
+net.flybyte.virgo.maven
+net.flybyte.virgo.maven.deployer
+net.flybyte.virgo.maven.server

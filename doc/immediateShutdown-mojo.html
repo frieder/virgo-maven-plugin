@@ -13,7 +13,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>maven-virgo-plugin Maven plugin - virgo:immediateShutdown</title>
+    <title>Maven plugin for Eclipse Virgo - virgo:immediateShutdown</title>
     <style type="text/css" media="all">
       @import url("./css/maven-base.css");
       @import url("./css/maven-theme.css");
@@ -25,7 +25,7 @@
     <div id="banner">
                     <span id="bannerLeft">
     
-            maven-virgo-plugin Maven plugin
+            Maven plugin for Eclipse Virgo
     
             </span>
                     <div class="clear">
@@ -42,7 +42,7 @@
   
     
             <div class="xleft">
-        Last Published: 2012-01-02
+        Last Published: 2012-01-03
                       </div>
             <div class="xright">      
   
@@ -78,7 +78,7 @@
             <ul>
               
     <li class="none">
-                    <a href="examples/simple-pom.xml">Simple configuration</a>
+                    <a href="examples/simple-pom.xml">Simple configuration maven-bundle-plugin</a>
           </li>
               
     <li class="none">
@@ -106,7 +106,7 @@
       <div id="contentBox">
         <div class="section"><h2><a name="virgo:immediateShutdown"></a>virgo:immediateShutdown</h2>
 <p><strong>Full name</strong>:</p>
-<p>net.flybyte.virgo:virgo-maven-plugin:0.0.1-SNAPSHOT:immediateShutdown</p>
+<p>net.flybyte.virgo:virgo-maven-plugin:1.0.0:immediateShutdown</p>
 <p><strong>Description</strong>:</p>
 <div>Stops a running Eclipse Virgo instance immediately. Check the <a href="http://virgo-opengrok.springsource.org/xref/virgo/org.eclipse.virgo.kernel/org.eclipse.virgo.kernel.core/src/main/java/org/eclipse/virgo/kernel/core/Shutdown.java" class="externalLink">Virgo
 sourcecode</a> for more information.</div><p><strong>Attributes</strong>:</p>
@@ -132,27 +132,11 @@ sourcecode</a> for more information.</div><p><strong>Attributes</strong>:</p>
 <th>Since</th>
 <th>Description</th>
 </tr>
-<tr class="b"><td><strong><a href="#osgiVersion">osgiVersion</a></strong></td>
-<td><code>String</code></td>
-<td><code>-</code></td>
-<td>An OSGi compatible version of the project version. Default value
-used for transformation is <code>${project.version}</code>. Once
-the getter method is called it will transform the first -(hyphen)
-it can find into a .(dot).<br />
-<strong>Default value is</strong>: <code>${project.version}</code>.</td>
-</tr>
-<tr class="a"><td><strong><a href="#password">password</a></strong></td>
+<tr class="b"><td><strong><a href="#password">password</a></strong></td>
 <td><code>String</code></td>
 <td><code>-</code></td>
 <td>The password used to connect to Virgo via JMX.<br />
 <strong>Default value is</strong>: <code>springsource</code>.</td>
-</tr>
-<tr class="b"><td><strong><a href="#recoverable">recoverable</a></strong></td>
-<td><code>boolean</code></td>
-<td><code>-</code></td>
-<td>Defineds whether or not the artifact should be recovered after a
-server restart.<br />
-<strong>Default value is</strong>: <code>true</code>.</td>
 </tr>
 <tr class="a"><td><strong><a href="#serviceUrl">serviceUrl</a></strong></td>
 <td><code>String</code></td>
@@ -160,17 +144,7 @@ server restart.<br />
 <td>The service url of the JMX management server.<br />
 <strong>Default value is</strong>: <code>service:jmx:rmi://localhost:9875/jndi/rmi://localhost:9875/jmxrmi</code>.</td>
 </tr>
-<tr class="b"><td><strong><a href="#symbolicName">symbolicName</a></strong></td>
-<td><code>String</code></td>
-<td><code>-</code></td>
-<td>The symbolic name of the bundle. In case one is using something
-different than
-<code>${project.groupId}.${project.artifactId}</code> for the
-symbolic name when using the Maven bundle plugin or Bundlor Maven
-plugin change the value of this property accordingly.<br />
-<strong>Default value is</strong>: <code>${project.groupId}.${project.artifactId}</code>.</td>
-</tr>
-<tr class="a"><td><strong><a href="#truststoreLocation">truststoreLocation</a></strong></td>
+<tr class="b"><td><strong><a href="#truststoreLocation">truststoreLocation</a></strong></td>
 <td><code>File</code></td>
 <td><code>-</code></td>
 <td>The location of the truststore used by Virgo. Instead of definining
@@ -182,7 +156,7 @@ will be used and a relative path <code>/config/keystore</code> will
 be added to it.<br />
 </td>
 </tr>
-<tr class="b"><td><strong><a href="#user">user</a></strong></td>
+<tr class="a"><td><strong><a href="#user">user</a></strong></td>
 <td><code>String</code></td>
 <td><code>-</code></td>
 <td>The username used to connect to Virgo via JMX.<br />
@@ -191,42 +165,16 @@ be added to it.<br />
 </table>
 </div>
 <div class="section"><h3><a name="Parameter_Details"></a>Parameter Details</h3>
-<p><strong><a name="osgiVersion">osgiVersion</a>:</strong></p>
-<div>An OSGi compatible version of the project version. Default value
-used for transformation is <code>${project.version}</code>. Once
-the getter method is called it will transform the first -(hyphen)
-it can find into a .(dot).</div><ul><li><strong>Type</strong>: <code>java.lang.String</code></li>
-<li><strong>Required</strong>: <code>No</code></li>
-<li><strong>Default</strong>: <code>${project.version}</code></li>
-</ul>
-<hr />
 <p><strong><a name="password">password</a>:</strong></p>
 <div>The password used to connect to Virgo via JMX.</div><ul><li><strong>Type</strong>: <code>java.lang.String</code></li>
 <li><strong>Required</strong>: <code>No</code></li>
 <li><strong>Default</strong>: <code>springsource</code></li>
 </ul>
 <hr />
-<p><strong><a name="recoverable">recoverable</a>:</strong></p>
-<div>Defineds whether or not the artifact should be recovered after a
-server restart.</div><ul><li><strong>Type</strong>: <code>boolean</code></li>
-<li><strong>Required</strong>: <code>No</code></li>
-<li><strong>Default</strong>: <code>true</code></li>
-</ul>
-<hr />
 <p><strong><a name="serviceUrl">serviceUrl</a>:</strong></p>
 <div>The service url of the JMX management server.</div><ul><li><strong>Type</strong>: <code>java.lang.String</code></li>
 <li><strong>Required</strong>: <code>No</code></li>
 <li><strong>Default</strong>: <code>service:jmx:rmi://localhost:9875/jndi/rmi://localhost:9875/jmxrmi</code></li>
-</ul>
-<hr />
-<p><strong><a name="symbolicName">symbolicName</a>:</strong></p>
-<div>The symbolic name of the bundle. In case one is using something
-different than
-<code>${project.groupId}.${project.artifactId}</code> for the
-symbolic name when using the Maven bundle plugin or Bundlor Maven
-plugin change the value of this property accordingly.</div><ul><li><strong>Type</strong>: <code>java.lang.String</code></li>
-<li><strong>Required</strong>: <code>No</code></li>
-<li><strong>Default</strong>: <code>${project.groupId}.${project.artifactId}</code></li>
 </ul>
 <hr />
 <p><strong><a name="truststoreLocation">truststoreLocation</a>:</strong></p>
