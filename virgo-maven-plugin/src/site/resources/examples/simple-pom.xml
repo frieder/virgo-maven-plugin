@@ -29,7 +29,7 @@
 			<plugin>
 				<groupId>net.flybyte.virgo</groupId>
 				<artifactId>virgo-maven-plugin</artifactId>
-				<version>0.0.1-SNAPSHOT</version>
+				<version>1.0.0</version>
 				<configuration>
 					<virgoRoot>C:/Java/virgo-tomcat-server-3.0.2.RELEASE</virgoRoot>
 				</configuration>
