@@ -9,7 +9,6 @@ import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 
 import net.flybyte.virgo.maven.BaseMojo;
-import net.flybyte.virgo.maven.ExtendedBaseMojo;
 
 /**
  * Refresh a single module of the application which was deployed from the given URI via Eclipse
@@ -23,7 +22,7 @@ import net.flybyte.virgo.maven.ExtendedBaseMojo;
  * @author Frieder Heugel
  * 
  */
-public class Refresh extends ExtendedBaseMojo {
+public class Refresh extends BaseMojo {
 
 	@Override
 	public void execute() throws MojoExecutionException, MojoFailureException {

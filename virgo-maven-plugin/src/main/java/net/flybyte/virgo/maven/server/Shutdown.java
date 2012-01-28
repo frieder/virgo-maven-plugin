@@ -11,9 +11,7 @@ import org.apache.maven.plugin.MojoFailureException;
 import net.flybyte.virgo.maven.BaseMojo;
 
 /**
- * Stops a running Eclipse Virgo instance. Check the <a href=
- * "http://virgo-opengrok.springsource.org/xref/virgo/org.eclipse.virgo.kernel/org.eclipse.virgo.kernel.core/src/main/java/org/eclipse/virgo/kernel/core/Shutdown.java"
- * >Virgo sourcecode</a> for more information.
+ * Shuts a running Eclipse Virgo instance down.
  * 
  * @goal shutdown
  * @requiresProject true

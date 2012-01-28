@@ -9,7 +9,6 @@ import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 
 import net.flybyte.virgo.maven.BaseMojo;
-import net.flybyte.virgo.maven.ExtendedBaseMojo;
 
 /**
  * Refresh any bundle with the given symbolic name and version and any bundles cloned from a bundle
@@ -22,7 +21,7 @@ import net.flybyte.virgo.maven.ExtendedBaseMojo;
  * 
  * @author Frieder Heugel
  */
-public class RefreshBundle extends ExtendedBaseMojo {
+public class RefreshBundle extends BaseMojo {
 
 	@Override
 	public void execute() throws MojoExecutionException, MojoFailureException {
