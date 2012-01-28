@@ -380,85 +380,171 @@ public abstract class BaseMojo extends AbstractMojo {
 	 */
 	public void setTruststoreLocation(File truststoreLocation) {
 		this.truststoreLocation = truststoreLocation;
+		// TODO
 	}
 
 	/**
-	 * This method does nothing.
+	 * Returns the service URL used to connect to the MBean server.
 	 * 
-	 * @param truststoreLocation
+	 * @return
 	 */
-	public void setTruststoreLocation(String truststoreLocation) {
-
-	}
-
 	public String getServiceUrl() {
 		return String.format(serviceUrl, jmxPort, jmxPort);
 	}
 
+	/**
+	 * Set the service URL used to connect to the MBean server.
+	 * 
+	 * @param serviceUrl
+	 */
 	public void setServiceUrl(String serviceUrl) {
 		this.serviceUrl = serviceUrl;
 	}
 
+	/**
+	 * Get the user name used to connect to the MBean server.
+	 * 
+	 * @return
+	 */
 	public String getUser() {
 		return user;
 	}
 
+	/**
+	 * Set the user name used to connect to the MBean server.
+	 * 
+	 * @param user
+	 */
 	public void setUser(String user) {
 		this.user = user;
 	}
 
+	/**
+	 * Get the password used to connect to the MBean server.
+	 * 
+	 * @return
+	 */
 	public String getPassword() {
 		return password;
 	}
 
+	/**
+	 * Set the password used to connect to the MBean server.
+	 * 
+	 * @param password
+	 */
 	public void setPassword(String password) {
 		this.password = password;
 	}
 
+	/**
+	 * Return the location of the target folder as a string.
+	 * 
+	 * @return
+	 */
 	public String getPath() {
 		return path;
 	}
 
+	/**
+	 * Return the name of the final artefact.
+	 * 
+	 * @return
+	 */
 	public String getFinalArtefact() {
 		return finalArtefact;
 	}
 
+	/**
+	 * Return the packaging type.
+	 * 
+	 * @return
+	 */
 	public String getPackaging() {
 		return packaging;
 	}
 
+	/**
+	 * Set the packaging type. Do not call this method directly.
+	 * 
+	 * @param packaging
+	 */
 	public void setPackaging(String packaging) {
 		this.packaging = packaging;
 	}
 
+	/**
+	 * Get the symbolic name.
+	 * 
+	 * @return
+	 */
 	public String getSymbolicName() {
 		return symbolicName;
 	}
 
+	/**
+	 * Set the symbolic name.
+	 * 
+	 * @param symbolicName
+	 */
 	public void setSymbolicName(String symbolicName) {
 		this.symbolicName = symbolicName;
 	}
 
+	/**
+	 * Get the OSGi version. It will use Bundlor's MavenVersionNumberConverter class to provide a valid OSGi
+	 * version.
+	 * 
+	 * @return
+	 */
 	public String getOsgiVersion() {
 		return MavenVersionNumberConverter.convertToOsgi(osgiVersion);
 	}
 
-	public String getRawOsgiVersion() {
+	/**
+	 * Get the version as defined by the user or the artefact's version in case no OSGi version has been
+	 * specified. There is no quarantee that this version is a valid OSGi version.
+	 * 
+	 * @return
+	 */
+	public String getOriginalVersion() {
 		return osgiVersion;
 	}
 
+	/**
+	 * Set the OSGi version.
+	 * 
+	 * @param osgiVersion
+	 */
 	public void setOsgiVersion(String osgiVersion) {
-		this.osgiVersion = osgiVersion;
+		if (osgiVersion != null && osgiVersion.trim().length() > 0) {
+			this.osgiVersion = osgiVersion;
+		}
 	}
 
+	/**
+	 * Returns whether or not an artefact is recoverable after a server restart.
+	 * 
+	 * @return
+	 */
 	public boolean isRecoverable() {
 		return recoverable;
 	}
 
+	/**
+	 * Define whether or not the artefact is recoverable after a server restart.
+	 * 
+	 * @param recoverable
+	 */
 	public void setRecoverable(boolean recoverable) {
 		this.recoverable = recoverable;
 	}
 
+	/**
+	 * Returns the JMX connector object.
+	 * 
+	 * @return
+	 */
 	public JMXConnector getConnector() {
 		return connector;
 	}
