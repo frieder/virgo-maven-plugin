@@ -24,6 +24,8 @@ public class ImmediateShutdown extends BaseMojo {
 	@Override
 	public void execute() throws MojoExecutionException, MojoFailureException {
 		try {
+			// check whether or not a JMX port has been specified in the start arguments
+			checkForJMXPort();
 			logger.info("Prepare immediate shutdown of Eclipse Virgo");
 			MBeanServerConnection connection = getConnection();
 			ObjectName name = new ObjectName(BaseMojo.MBEAN_SHUTDOWN);

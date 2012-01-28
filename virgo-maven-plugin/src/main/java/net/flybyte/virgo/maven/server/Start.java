@@ -66,7 +66,7 @@ public class Start extends BaseMojo {
 	 * Process the given start arguments
 	 */
 	private void processArguments(CommandLine cmdLine) {
-		logger.info("Parsing for boot arguments to pass on");
+		logger.info("Parsing for start arguments to pass on");
 		boolean jmxParam = false;
 		for (String argument : getStartParams()) {
 			if (jmxParam) { // JMX port number

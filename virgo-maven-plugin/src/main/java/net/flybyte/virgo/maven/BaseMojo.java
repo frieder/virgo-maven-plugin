@@ -248,6 +248,26 @@ public abstract class BaseMojo extends AbstractMojo {
 	}
 
 	/**
+	 * Process start arguments to check whether or not a JMX port has been specified. In case a JMX port has
+	 * been found it will be set.
+	 */
+	protected void checkForJMXPort() {
+		logger.info("Parsing the start arguments for a JMX port");
+		boolean jmxParam = false;
+		for (String argument : getStartParams()) {
+			if (jmxParam) { // JMX port number
+				setJmxPort(argument.trim());
+				logger.debug("JMX port found: " + getJmxPort());
+				return;
+			}
+			if ("-jmxport".equalsIgnoreCase(argument.trim())) {
+				logger.debug("JMX argument found, expect next argument to be a valid port number");
+				jmxParam = true;
+			}
+		}
+	}
+
+	/**
 	 * Transforms a stack trace into a String object.
 	 * 
 	 * @param throwable

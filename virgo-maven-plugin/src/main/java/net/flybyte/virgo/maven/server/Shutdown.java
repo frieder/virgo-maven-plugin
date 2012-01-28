@@ -21,9 +21,10 @@ import net.flybyte.virgo.maven.BaseMojo;
  */
 public class Shutdown extends BaseMojo {
 
-	@Override
 	public void execute() throws MojoExecutionException, MojoFailureException {
 		try {
+			// check whether or not a JMX port has been specified in the start arguments
+			checkForJMXPort();
 			logger.info("Prepare shutdown of Eclipse Virgo");
 			MBeanServerConnection connection = getConnection();
 			ObjectName name = new ObjectName(BaseMojo.MBEAN_SHUTDOWN);
@@ -38,7 +39,7 @@ public class Shutdown extends BaseMojo {
 			} catch (IOException e) {
 				throw new MojoFailureException(stackTrace2String(e));
 			}
-		}	
+		}
 	}
 
 }
