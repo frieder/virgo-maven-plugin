@@ -10,12 +10,13 @@ Unfortunately there is currently no artifact available in any Maven repository s
 
 Currently the following goals are available
 
-* mvn start - This will start a Virgo instance
-* mvn shutdown - This will shutdown a Virgo instance
-* mvn immediateShutdown - This will instantly shutdown a Virgo instance
-* mvn deploy - This will deploy an OSGi bundle (hopefully in the future it will support plan and par as well)
-* mvn undeploy - This will undeploy an OSGi bundle
-* mvn update - This will update an previously installed OSGi bundle
+* mvn virgo:start - This will start a Virgo instance
+* mvn virgo:shutdown - This will shutdown a Virgo instance
+* mvn virgo:immediateShutdown - This will instantly shutdown a Virgo instance
+* mvn virgo:deploy - This will deploy an OSGi bundle (hopefully in the future it will support plan and par as well)
+* mvn virgo:undeploy - This will undeploy an OSGi bundle
+* mvn virgo:refresh - This will refresh a previously installed OSGi module
+* mvn virgo:bundleRefresh - This will refresh a previously installed OSGi bundle
 
 ## Examples
 
