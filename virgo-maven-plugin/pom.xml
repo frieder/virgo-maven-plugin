@@ -4,7 +4,7 @@
 	<groupId>net.flybyte.virgo</groupId>
 	<artifactId>virgo-maven-plugin</artifactId>
 	<!-- <version>1.0.1-SNAPSHOT-${maven.build.timestamp}</version> -->
-	<version>1.0.1-SNAPSHOT</version>
+	<version>1.0.2-SNAPSHOT</version>
 	<packaging>maven-plugin</packaging>
 	<name>Maven plugin for Eclipse Virgo</name>
 	<description>
