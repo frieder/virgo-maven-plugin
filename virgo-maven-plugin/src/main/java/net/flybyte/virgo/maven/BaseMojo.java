@@ -232,6 +232,8 @@ public abstract class BaseMojo extends AbstractMojo {
 			ext = "plan";
 		} else if ("virgo-par".equalsIgnoreCase(packaging)) {
 			ext = "par";
+		} else if ("par".equalsIgnoreCase(packaging)) {
+			ext = "par";
 		} else if ("virgo-property".equalsIgnoreCase(packaging)) {
 			ext = "properties";
 			throw new MojoFailureException("", new UnsupportedOperationException(
