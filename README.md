@@ -1,3 +1,5 @@
+__This project is not maintained anymore. I just leave it here for the public benefit.__
+
 A Maven plugin that provides a convenient way to start Eclipse Virgo and to deploy OSGi bundles to it.
 
 ## Installation
